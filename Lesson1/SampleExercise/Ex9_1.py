@@ -9,10 +9,10 @@ class Sach:
 
     def nhapThongTin(self, n):
         for i in range(n):
-            ma = input("Nhap ma sach: ")
-            ten = input("Nhap ten sach: ")
-            dg = float(input("Nhap don gia: "))
-            sl = int(input("Nhap so luong: "))
+            ma = input("\nNhập mã sách: ")
+            ten = input("Nhập tên sách: ")
+            dg = float(input("Nhập đơn giá: "))
+            sl = int(input("Nhập số lượng: "))
 
             # Thêm thông tin của sách vào từ điển
             self.dic_sach['masach'].append(ma)
@@ -29,17 +29,19 @@ class Sach:
         ten = self.dic_sach['tensach'][index]
         dg = self.dic_sach['dongia'][index]
         sl = self.dic_sach['soluong'][index]
-        print(f"Ma sach: {ma}, Ten sach: {ten}, Don gia: {dg}, So luong: {sl}")
+        print(f"Mã sách: {ma}, Tên sách: {ten}, Đơn giá: {dg}, Số lượng: {sl}")
+# Tính tổng số lượng sách
 
     def tongSoLuong(self):
         tong_so_luong_sach = sum(self.dic_sach['soluong'])
-        print("Tong so luong sach: " + str(tong_so_luong_sach))
+        print("Tổng số lượng sách: " + str(tong_so_luong_sach))
+
+# Xuất tên các sách có số lượng > 10
 
     def sachSLHon10(self):
-        print("Sach co so luong lon hon 10:")
+        print("Sách có số lượng lớn hơn 10:")
         for i in range(len(self.dic_sach["masach"])):
             if self.dic_sach["soluong"][i] > 10:
                 print(self.dic_sach["tensach"][i])
 
-# Tạo một đối tượng sách với 3 cuốn sách và thực hiện các chức năng
 sach_obj = Sach(3)
