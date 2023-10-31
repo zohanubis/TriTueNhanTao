@@ -58,6 +58,14 @@ def get_successors(state):
     for action in ["Up", "Down", "Left", "Right"]:
         # Tính toán next_state và step_cost dựa trên action
         # Ví dụ: next_state, step_cost = move(state, action)
+        if action == "Up":
+            next_state, step_cost = move_up(state)
+        elif action == "Down":
+            next_state, step_cost = move_down(state)
+        elif action == "Left":
+            next_state, step_cost = move_left(state)
+        elif action == "Right":
+            next_state, step_cost = move_right(state)
         successors.append((action, next_state, step_cost))
     return successors
 
@@ -69,6 +77,22 @@ def h(state, goal):
 # Định nghĩa trạng thái ban đầu và trạng thái đích
 start_state = (0, 0)
 goal_state = (5, 5)
+
+# Hàm di chuyển lên
+def move_up(state):
+    return (state[0], state[1] - 1), 1
+
+# Hàm di chuyển xuống
+def move_down(state):
+    return (state[0], state[1] + 1), 1
+
+# Hàm di chuyển sang trái
+def move_left(state):
+    return (state[0] - 1, state[1]), 1
+
+# Hàm di chuyển sang phải
+def move_right(state):
+    return (state[0] + 1, state[1]), 1
 
 path = astar(start_state, goal_state, h)
 
