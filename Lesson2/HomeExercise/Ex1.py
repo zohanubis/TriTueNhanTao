@@ -1,11 +1,10 @@
 import copy
 from heapq import heappush, heappop
 
-n = 3
-m = 8 #chỉnh 8 hướng
+m = 4
 
-rows = [1, 1, 0, -1, -1, -1, 0, 1]
-cols = [0, 1, 1, 1, 0, -1, -1, -1]
+rows = [1, 0, -1, 0]
+cols = [0, 1, 0, -1]
 
 class PriorityQueue:
     def __init__(self):
@@ -50,9 +49,8 @@ def createNewNode(state, empty_tile_pos, new_empty_tile_pos, level, parent, goal
 def printMatrix(state):
     for i in range(n):
         for j in range(n):
-            print("%d " % state[i][j], end=" ")
+            print("%2d " % state[i][j], end=" ")
         print()
-    print()
 
 def isValid(x, y):
     return 0 <= x < n and 0 <= y < n
@@ -62,6 +60,7 @@ def printPath(root):
         return
     printPath(root.parent)
     printMatrix(root.state)
+    print()
 
 def solvePuzzle(initial, empty_tile_pos, goal):
     pq = PriorityQueue()
@@ -86,18 +85,24 @@ def solvePuzzle(initial, empty_tile_pos, goal):
                 child = createNewNode(minimum.state, minimum.empty_tile_pos, (new_x, new_y), minimum.level + 1, minimum, goal)
                 pq.push(child)
 
-initial_state = [
-    [1, 2, 3],
-    [5, 6, 0],
-    [7, 8, 4]
-]
+# Nhập giá trị n từ bàn phím
+n = int(input("Nhập giá trị n (kích thước của bảng n-Puzzle): "))
 
-goal_state = [
-    [1, 2, 3],
-    [5, 8, 6],
-    [0, 7, 4]
-]
+# Tạo trạng thái ban đầu và trạng thái mục tiêu dựa trên giá trị n
+initial_state = [[0] * n for _ in range(n)]
+goal_state = [[0] * n for _ in range(n)]
 
-empty_tile_position = (1, 2)
+for i in range(n):
+    initial_state[i] = list(map(int, input(f"Nhập hàng {i + 1} của trạng thái ban đầu: ").split()))
+
+for i in range(n):
+    goal_state[i] = list(map(int, input(f"Nhập hàng {i + 1} của trạng thái mục tiêu: ").split()))
+
+empty_tile_position = None
+for i in range(n):
+    for j in range(n):
+        if initial_state[i][j] == 0:
+            empty_tile_position = (i, j)
+            break
 
 solvePuzzle(initial_state, empty_tile_position, goal_state)

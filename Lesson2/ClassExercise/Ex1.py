@@ -1,11 +1,11 @@
 import copy
 from heapq import heappush, heappop
 
-n = 3
-m = 8 #chỉnh 8 hướng
+n = 4
+m = 4  # 4 hướng
 
-rows = [1, 1, 0, -1, -1, -1, 0, 1]
-cols = [0, 1, 1, 1, 0, -1, -1, -1]
+rows = [1, 0, -1, 0]
+cols = [0, 1, 0, -1]
 
 class PriorityQueue:
     def __init__(self):
@@ -50,9 +50,8 @@ def createNewNode(state, empty_tile_pos, new_empty_tile_pos, level, parent, goal
 def printMatrix(state):
     for i in range(n):
         for j in range(n):
-            print("%d " % state[i][j], end=" ")
+            print("%2d " % state[i][j], end=" ")
         print()
-    print()
 
 def isValid(x, y):
     return 0 <= x < n and 0 <= y < n
@@ -62,6 +61,7 @@ def printPath(root):
         return
     printPath(root.parent)
     printMatrix(root.state)
+    print()
 
 def solvePuzzle(initial, empty_tile_pos, goal):
     pq = PriorityQueue()
@@ -87,17 +87,19 @@ def solvePuzzle(initial, empty_tile_pos, goal):
                 pq.push(child)
 
 initial_state = [
-    [1, 2, 3],
-    [5, 6, 0],
-    [7, 8, 4]
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+    [13, 14, 0, 15]
 ]
 
 goal_state = [
-    [1, 2, 3],
-    [5, 8, 6],
-    [0, 7, 4]
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+    [13, 14, 15, 0]
 ]
 
-empty_tile_position = (1, 2)
+empty_tile_position = (3, 2)
 
 solvePuzzle(initial_state, empty_tile_position, goal_state)
