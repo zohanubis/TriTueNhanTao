@@ -85,7 +85,7 @@ def tbcTichPhanTuKhongBien(a):
     total_tich = 0
     count_tich = 0
     m, n = len(a), len(a[0])
-    
+
     for i in range(1, m - 1):
         for j in range(1, n - 1):
             tich = 1
@@ -94,11 +94,13 @@ def tbcTichPhanTuKhongBien(a):
                     tich *= a[x][y]
             total_tich += tich
             count_tich += 1
-            
+
     if count_tich > 0:
         return total_tich / count_tich
     else:
         return 0
+
+
 
 while True:
     print("-----------------------------------------------------------")
