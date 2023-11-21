@@ -47,7 +47,6 @@ def distance(city1, city2):
     return 0  
 
 def heuristic(cities, current_city, goal_city):
-    # Hàm heuristic ước tính chi phí còn lại (ở đây, là chi phí đi từ thành phố hiện tại đến thành phố cuối cùng)
     remaining_cities = [city for city in cities if city not in current_city]
     if not remaining_cities:
         return distance(current_city, goal_city)
