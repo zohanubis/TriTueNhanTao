@@ -53,8 +53,7 @@ def result(board, action):
     curr_player = player(board)
     result_board = copy.deepcopy(board)
     (i, j) = action
-    if result_board[i][j] == EMPTY:
-        result_board[i][j] = curr_player
+    result_board[i][j] = curr_player
     return result_board
 
 def get_horizontal_winner(board):
