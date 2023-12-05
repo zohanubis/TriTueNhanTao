@@ -52,6 +52,5 @@ file_path = 'D:\VIsual Studio Code - Github\TriTueNhanTao\Lesson4\Ex3_matrix.txt
 adjacency_matrix = read_adjacency_matrix(file_path)
 
 if adjacency_matrix:
-    # Tiếp tục với thuật toán xếp lịch thi đấu hoặc bất kỳ xử lý nào khác bạn cần thực hiện với ma trận đồ thị.
     color_schedule(adjacency_matrix)
 
